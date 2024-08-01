@@ -25,7 +25,7 @@ class SearchViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     
-    let data = ["A", "B", "C", "AB", "D", "ABC", "BBB", "EC", "SA", "AAAB", "ED", "F", "G", "H"]
+    var data = ["A", "B", "C", "AB", "D", "ABC", "BBB", "EC", "SA", "AAAB", "ED", "F", "G", "H"]
     lazy var list = BehaviorRelay(value: data)
     
     override func viewDidLoad() {
@@ -51,9 +51,20 @@ class SearchViewController: UIViewController {
             // 중복 단어 막기
             .distinctUntilChanged()
             .bind(with: self) { owner, value in
-                print("검색:", value)
+                print("실시간 검색: \(value)")
                 let result = value.isEmpty ? owner.data : owner.data.filter { $0.contains(value) }
                 owner.list.accept(result)
+            }
+            .disposed(by: disposeBag)
+        
+        navigationItem.rightBarButtonItem?.rx.tap
+            .withLatestFrom(searchBar.rx.text.orEmpty) { void, text in
+                return text
+            }
+            .bind(with: self) { owner, value in
+                print("추가: \(value)")
+                owner.data.insert(value, at: 0)
+                owner.list.accept(owner.data)
             }
             .disposed(by: disposeBag)
     }
