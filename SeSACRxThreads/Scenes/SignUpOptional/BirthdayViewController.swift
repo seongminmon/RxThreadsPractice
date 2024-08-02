@@ -102,22 +102,9 @@ class BirthdayViewController: UIViewController {
         birthDayPicker.rx.date
             .map {
                 // 만 17세 이상인지 판별
-                let component = Calendar.current.dateComponents([.year, .month, .day], from: $0, to: Date())
-                guard let diffYear = component.year,
-                      let diffMonth = component.month,
-                      let diffDay = component.day else { return false }
-                if diffYear > 17 {
-                    return true
-                } else if diffYear == 17 {
-                    if diffMonth > 0 {
-                        return true
-                    } else if diffMonth == 0 {
-                        if diffDay >= 0 {
-                            return true
-                        }
-                    }
-                }
-                return false
+                let component = Calendar.current.dateComponents([.year], from: $0, to: Date())
+                guard let age = component.year else { return false }
+                return age >= 17
             }
             .bind(with: self) { owner, value in
                 // 레이블 표시 + 색 변경, 버튼 활성화 + 색 변경

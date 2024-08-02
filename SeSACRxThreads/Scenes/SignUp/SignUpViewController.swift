@@ -42,7 +42,7 @@ class SignUpViewController: UIViewController {
         // 중복 확인 버튼
         validationButton.rx.tap
             .bind(with: self) { owner, _ in
-                owner.showAlert(title: "중복이 아닙니다.", completionHandler: nil)
+                owner.showAlert(title: "사용 가능한 이메일입니다.", completionHandler: nil)
             }
             .disposed(by: disposeBag)
         

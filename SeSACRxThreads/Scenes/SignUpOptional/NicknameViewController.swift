@@ -33,6 +33,8 @@ class NicknameViewController: UIViewController {
                     _ = try owner.checkNickname(value)
                     owner.descriptionLabel.textColor = Color.green
                     owner.descriptionText.onNext("사용 가능한 닉네임이에요")
+                    owner.nextButton.isEnabled = true
+                    owner.nextButton.backgroundColor = Color.green
                 } catch {
                     guard let error = error as? NicknameValidationError else {
                         owner.descriptionText.onNext("알 수 없는 에러가 발생했습니다")
@@ -40,6 +42,8 @@ class NicknameViewController: UIViewController {
                     }
                     owner.descriptionLabel.textColor = Color.red
                     owner.descriptionText.onNext(error.errorDescription ?? "알 수 없는 에러가 발생했습니다")
+                    owner.nextButton.isEnabled = false
+                    owner.nextButton.backgroundColor = Color.red
                 }
             }
             .disposed(by: disposeBag)
