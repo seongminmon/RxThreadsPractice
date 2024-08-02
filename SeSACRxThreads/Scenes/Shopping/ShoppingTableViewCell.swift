@@ -6,16 +6,25 @@
 //
 
 import UIKit
+import RxSwift
 import SnapKit
 
 final class ShoppingTableViewCell: UITableViewCell {
     
     static let id = "ShoppingTableViewCell"
     
-    let containerView = UIView()
+    private let containerView = UIView()
     let checkButton = UIButton()
-    let mainLabel = UILabel()
+    private let mainLabel = UILabel()
     let starButton = UIButton()
+    
+    var disposeBag = DisposeBag()
+    
+    // 구독 중첩 막기
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -26,7 +35,9 @@ final class ShoppingTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureView() {
+    private func configureView() {
+        selectionStyle = .none
+        
         containerView.clipsToBounds = true
         containerView.layer.cornerRadius = 10
         containerView.backgroundColor = .systemGray6
@@ -64,7 +75,7 @@ final class ShoppingTableViewCell: UITableViewCell {
     }
     
     func configureCell(_ data: Shopping) {
-        let checkImage = data.isSelected ? UIImage(systemName: "checkmark.square.fill") : UIImage(systemName: "checkmark.square")
+        let checkImage = data.isComplete ? UIImage(systemName: "checkmark.square.fill") : UIImage(systemName: "checkmark.square")
         checkButton.setImage(checkImage, for: .normal)
         let starImage = data.isStar ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
         starButton.setImage(starImage, for: .normal)

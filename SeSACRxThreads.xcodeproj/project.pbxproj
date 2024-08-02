@@ -36,6 +36,7 @@
 		240815812C5CAEB800886D1E /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240815802C5CAEB800886D1E /* ShoppingListViewController.swift */; };
 		240815832C5CB0A200886D1E /* ShoppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240815822C5CB0A200886D1E /* ShoppingTableViewCell.swift */; };
 		240815852C5CB0DA00886D1E /* Shopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240815842C5CB0DA00886D1E /* Shopping.swift */; };
+		240815872C5CBC9F00886D1E /* ShoppingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240815862C5CBC9F00886D1E /* ShoppingDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		240815802C5CAEB800886D1E /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		240815822C5CB0A200886D1E /* ShoppingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewCell.swift; sourceTree = "<group>"; };
 		240815842C5CB0DA00886D1E /* Shopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shopping.swift; sourceTree = "<group>"; };
+		240815862C5CBC9F00886D1E /* ShoppingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +246,7 @@
 				240815842C5CB0DA00886D1E /* Shopping.swift */,
 				240815802C5CAEB800886D1E /* ShoppingListViewController.swift */,
 				240815822C5CB0A200886D1E /* ShoppingTableViewCell.swift */,
+				240815862C5CBC9F00886D1E /* ShoppingDetailViewController.swift */,
 			);
 			path = Shopping;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				041280242AEF9BAB00972552 /* AppDelegate.swift in Sources */,
 				04F6DBFE2C5B0C0300667F4D /* SearchViewController.swift in Sources */,
 				04F6DC002C5B0C2200667F4D /* SearchTableViewCell.swift in Sources */,
+				240815872C5CBC9F00886D1E /* ShoppingDetailViewController.swift in Sources */,
 				041280732AEFAD4B00972552 /* NicknameViewController.swift in Sources */,
 				0412806A2AEFA91E00972552 /* SignUpViewController.swift in Sources */,
 				041280712AEFAD3D00972552 /* PhoneViewController.swift in Sources */,

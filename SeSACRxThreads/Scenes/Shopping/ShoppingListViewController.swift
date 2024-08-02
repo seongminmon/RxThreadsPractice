@@ -16,9 +16,10 @@ final class ShoppingListViewController: UIViewController {
     private let addButton = UIButton()
     private let tableView = UITableView()
     
-    let disposeBag = DisposeBag()
+    private var data = Shopping.dummy
+    private lazy var list = BehaviorRelay(value: data)
     
-    private let list = BehaviorRelay(value: Shopping.dummy)
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +29,68 @@ final class ShoppingListViewController: UIViewController {
     
     private func bind() {
         list
-            .bind(to: tableView.rx.items(cellIdentifier: ShoppingTableViewCell.id, cellType: ShoppingTableViewCell.self)) { row, element, cell in
+            .bind(to: tableView.rx.items(
+                cellIdentifier: ShoppingTableViewCell.id,
+                cellType: ShoppingTableViewCell.self
+            )) { row, element, cell in
                 cell.configureCell(element)
+                
+                cell.checkButton.rx.tap
+                    .bind(with: self) { owner, _ in
+                        print("완료 버튼 탭")
+                        owner.data[row].isComplete.toggle()
+                        owner.list.accept(owner.data)
+                    }
+                    .disposed(by: cell.disposeBag)
+                
+                cell.starButton.rx.tap
+                    .bind(with: self) { owner, _ in
+                        print("즐겨찾기 버튼 탭")
+                        owner.data[row].isStar.toggle()
+                        owner.list.accept(owner.data)
+                    }
+                    .disposed(by: cell.disposeBag)
+            }
+            .disposed(by: disposeBag)
+        
+        // 실시간 검색
+        searchTextField.rx.text.orEmpty
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .bind(with: self) { owner, value in
+                print("실시간 검색: \(value)")
+                let result = value.isEmpty ? owner.data : owner.data.filter { $0.contents.contains(value) }
+                owner.list.accept(result)
+            }
+            .disposed(by: disposeBag)
+        
+        // 셀 선택 시 화면 전환
+        tableView.rx.itemSelected
+            .bind(with: self) { owner, indexPath in
+                let vc = ShoppingDetailViewController()
+                vc.naviTitle = owner.data[indexPath.row].contents
+                owner.navigationController?.pushViewController(vc, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        // 데이터 추가
+        addButton.rx.tap
+            .withLatestFrom(searchTextField.rx.text.orEmpty)
+            .bind(with: self) { owner, value in
+                guard !value.trimmingCharacters(in: .whitespaces).isEmpty else { return }
+                let item = Shopping(contents: value, isComplete: false, isStar: false)
+                print("추가: \(item)")
+                owner.data.insert(item, at: 0)
+                owner.list.accept(owner.data)
+            }
+            .disposed(by: disposeBag)
+        
+        // 데이터 삭제
+        tableView.rx.itemDeleted
+            .bind(with: self) { owner, indexPath in
+                print("삭제: \(owner.data[indexPath.row])")
+                owner.data.remove(at: indexPath.row)
+                owner.list.accept(owner.data)
             }
             .disposed(by: disposeBag)
     }
