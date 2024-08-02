@@ -135,13 +135,13 @@
 			isa = PBXGroup;
 			children = (
 				2408157E2C5C805200886D1E /* Scenes */,
+				2408157D2C5C803D00886D1E /* Extension */,
 				041280232AEF9BAB00972552 /* AppDelegate.swift */,
 				041280252AEF9BAB00972552 /* SceneDelegate.swift */,
-				2408157D2C5C803D00886D1E /* Extension */,
+				041280772AF1D14000972552 /* Resource.swift */,
 				0412802C2AEF9BAC00972552 /* Assets.xcassets */,
 				0412802E2AEF9BAC00972552 /* LaunchScreen.storyboard */,
 				041280312AEF9BAC00972552 /* Info.plist */,
-				041280772AF1D14000972552 /* Resource.swift */,
 				240815762C5B7D3000886D1E /* APIKey.swift */,
 			);
 			path = SeSACRxThreads;
@@ -227,8 +227,16 @@
 				041280532AEF9C1F00972552 /* SignUp */,
 				0412806D2AEFAD0F00972552 /* SignUpOptional */,
 				04F6DBFC2C5B0BC200667F4D /* Search */,
+				2408157F2C5C888600886D1E /* Shopping */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		2408157F2C5C888600886D1E /* Shopping */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shopping;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

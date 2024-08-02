@@ -11,7 +11,7 @@ import RxCocoa
 import SnapKit
 
 class PhoneViewController: UIViewController {
-   
+    
     let phoneTextField = SignTextField(placeholderText: "연락처를 입력해주세요")
     let nextButton = PointButton(title: "다음")
     
@@ -20,10 +20,13 @@ class PhoneViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
-        
-        // 10자 이상, 숫자만 가능
+        bind()
+    }
+    
+    func bind() {
+        // 10자리, 숫자만 가능
         let valid = phoneTextField.rx.text.orEmpty
-            .map { $0.count >= 10 && Int($0) != nil }
+            .map { $0.count == 10 && Int($0) != nil }
         
         valid
             .bind(to: nextButton.rx.isEnabled)
