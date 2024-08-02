@@ -11,11 +11,11 @@ import RxCocoa
 
 class DetailViewController: UIViewController {
 
+    var naviTitle: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .lightGray
-        navigationItem.title = "Detail"
+        navigationItem.title = naviTitle
     }
-    
 }

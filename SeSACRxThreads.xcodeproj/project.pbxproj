@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		041280242AEF9BAB00972552 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041280232AEF9BAB00972552 /* AppDelegate.swift */; };
 		041280262AEF9BAB00972552 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041280252AEF9BAB00972552 /* SceneDelegate.swift */; };
-		041280282AEF9BAB00972552 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041280272AEF9BAB00972552 /* ViewController.swift */; };
 		0412802D2AEF9BAC00972552 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0412802C2AEF9BAC00972552 /* Assets.xcassets */; };
 		041280302AEF9BAC00972552 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0412802E2AEF9BAC00972552 /* LaunchScreen.storyboard */; };
 		0412803B2AEF9BAC00972552 /* SeSACRxThreadsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412803A2AEF9BAC00972552 /* SeSACRxThreadsTests.swift */; };
@@ -33,6 +32,8 @@
 		04F6DC022C5B0D8200667F4D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6DC012C5B0D8200667F4D /* DetailViewController.swift */; };
 		240815752C5B7D1200886D1E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 240815742C5B7D1200886D1E /* .gitignore */; };
 		240815772C5B7D3000886D1E /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240815762C5B7D3000886D1E /* APIKey.swift */; };
+		2408157A2C5C7BB000886D1E /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 240815792C5C7BB000886D1E /* Then */; };
+		2408157C2C5C803900886D1E /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2408157B2C5C803900886D1E /* UIViewController+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +57,6 @@
 		041280202AEF9BAB00972552 /* SeSACRxThreads.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSACRxThreads.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		041280232AEF9BAB00972552 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		041280252AEF9BAB00972552 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		041280272AEF9BAB00972552 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0412802C2AEF9BAC00972552 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0412802F2AEF9BAC00972552 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		041280312AEF9BAC00972552 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,6 +80,7 @@
 		04F6DC012C5B0D8200667F4D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		240815742C5B7D1200886D1E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		240815762C5B7D3000886D1E /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		2408157B2C5C803900886D1E /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +91,7 @@
 				041280602AEFA0AC00972552 /* SnapKit in Frameworks */,
 				0412805D2AEFA09E00972552 /* RxSwift in Frameworks */,
 				0412805B2AEFA09E00972552 /* RxCocoa in Frameworks */,
+				2408157A2C5C7BB000886D1E /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,19 +136,15 @@
 		041280222AEF9BAB00972552 /* SeSACRxThreads */ = {
 			isa = PBXGroup;
 			children = (
-				041280532AEF9C1F00972552 /* SignUp */,
-				041280542AEF9C2600972552 /* SignIn */,
-				0412806D2AEFAD0F00972552 /* SignUpOptional */,
-				041280612AEFA0BE00972552 /* CustomView */,
-				04F6DBFC2C5B0BC200667F4D /* Search */,
+				2408157E2C5C805200886D1E /* Scenes */,
 				041280232AEF9BAB00972552 /* AppDelegate.swift */,
 				041280252AEF9BAB00972552 /* SceneDelegate.swift */,
-				041280272AEF9BAB00972552 /* ViewController.swift */,
 				0412802C2AEF9BAC00972552 /* Assets.xcassets */,
 				0412802E2AEF9BAC00972552 /* LaunchScreen.storyboard */,
 				041280312AEF9BAC00972552 /* Info.plist */,
 				041280772AF1D14000972552 /* Resource.swift */,
 				240815762C5B7D3000886D1E /* APIKey.swift */,
+				2408157D2C5C803D00886D1E /* Extension */,
 			);
 			path = SeSACRxThreads;
 			sourceTree = "<group>";
@@ -215,6 +213,26 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		2408157D2C5C803D00886D1E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2408157B2C5C803900886D1E /* UIViewController+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		2408157E2C5C805200886D1E /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				041280542AEF9C2600972552 /* SignIn */,
+				041280532AEF9C1F00972552 /* SignUp */,
+				0412806D2AEFAD0F00972552 /* SignUpOptional */,
+				041280612AEFA0BE00972552 /* CustomView */,
+				04F6DBFC2C5B0BC200667F4D /* Search */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -235,6 +253,7 @@
 				0412805A2AEFA09E00972552 /* RxCocoa */,
 				0412805C2AEFA09E00972552 /* RxSwift */,
 				0412805F2AEFA0AC00972552 /* SnapKit */,
+				240815792C5C7BB000886D1E /* Then */,
 			);
 			productName = SeSACRxThreads;
 			productReference = 041280202AEF9BAB00972552 /* SeSACRxThreads.app */;
@@ -311,6 +330,7 @@
 			packageReferences = (
 				041280592AEFA09D00972552 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				0412805E2AEFA0AC00972552 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				240815782C5C7BB000886D1E /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			productRefGroup = 041280212AEF9BAB00972552 /* Products */;
 			projectDirPath = "";
@@ -360,8 +380,8 @@
 				041280652AEFA2F000972552 /* SignTextField.swift in Sources */,
 				0412806C2AEFABFE00972552 /* PasswordViewController.swift in Sources */,
 				041280562AEFA04800972552 /* SignInViewController.swift in Sources */,
-				041280282AEF9BAB00972552 /* ViewController.swift in Sources */,
 				041280632AEFA0CE00972552 /* PointButton.swift in Sources */,
+				2408157C2C5C803900886D1E /* UIViewController+.swift in Sources */,
 				04F6DC022C5B0D8200667F4D /* DetailViewController.swift in Sources */,
 				041280242AEF9BAB00972552 /* AppDelegate.swift in Sources */,
 				04F6DBFE2C5B0C0300667F4D /* SearchViewController.swift in Sources */,
@@ -734,6 +754,14 @@
 				minimumVersion = 5.6.0;
 			};
 		};
+		240815782C5C7BB000886D1E /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -751,6 +779,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0412805E2AEFA0AC00972552 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		240815792C5C7BB000886D1E /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 240815782C5C7BB000886D1E /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

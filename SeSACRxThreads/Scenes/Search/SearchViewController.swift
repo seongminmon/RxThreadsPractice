@@ -38,10 +38,16 @@ class SearchViewController: UIViewController {
     func bind() {
         list
             .bind(to: tableView.rx.items(cellIdentifier: SearchTableViewCell.identifier, cellType: SearchTableViewCell.self)) { (row, element, cell) in
-                
                 cell.appNameLabel.text = element
                 cell.appIconImageView.backgroundColor = .systemBlue
-                
+                cell.downloadButton.rx.tap
+                    .bind(with: self) { owner, _ in
+                        print("셀 버튼 탭: \(row)")
+                        let vc = DetailViewController()
+                        vc.naviTitle = element
+                        owner.navigationController?.pushViewController(vc, animated: true)
+                    }
+                    .disposed(by: cell.disposeBag)
             }
             .disposed(by: disposeBag)
         
