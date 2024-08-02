@@ -17,7 +17,6 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Color.white
         configureLayout()
         configure()
         signUpButton.addTarget(self, action: #selector(signUpButtonClicked), for: .touchUpInside)
@@ -28,6 +27,7 @@ class SignInViewController: UIViewController {
     }
     
     func configure() {
+        view.backgroundColor = Color.white
         signUpButton.setTitle("회원이 아니십니까?", for: .normal)
         signUpButton.setTitleColor(Color.black, for: .normal)
     }

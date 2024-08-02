@@ -25,16 +25,16 @@ class PasswordViewController: UIViewController {
     }
     
     func bind() {
-        let isValid = passwordTextField.rx.text.orEmpty
+        let valid = passwordTextField.rx.text.orEmpty
             .map { $0.count >= 8 }
         
-        isValid
+        valid
             .bind(with: self) { owner, value in
                 owner.nextButton.backgroundColor = value ? Color.green : Color.red
             }
             .disposed(by: disposeBag)
         
-        isValid
+        valid
             .bind(to: nextButton.rx.isEnabled,
                   descriptionLabel.rx.isHidden)
             .disposed(by: disposeBag)
