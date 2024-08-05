@@ -39,6 +39,7 @@
 		240815872C5CBC9F00886D1E /* ShoppingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240815862C5CBC9F00886D1E /* ShoppingDetailViewController.swift */; };
 		244131BB2C6093710068527D /* PhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244131BA2C6093710068527D /* PhoneViewModel.swift */; };
 		244131BE2C60956F0068527D /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244131BD2C60956F0068527D /* NicknameViewModel.swift */; };
+		244131C22C609B2F0068527D /* BirthdayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244131C12C609B2F0068527D /* BirthdayViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		240815862C5CBC9F00886D1E /* ShoppingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingDetailViewController.swift; sourceTree = "<group>"; };
 		244131BA2C6093710068527D /* PhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewModel.swift; sourceTree = "<group>"; };
 		244131BD2C60956F0068527D /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
+		244131C12C609B2F0068527D /* BirthdayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,7 +210,7 @@
 			children = (
 				244131BC2C60955C0068527D /* Phone */,
 				244131BF2C60957C0068527D /* Nickname */,
-				0412806E2AEFAD2D00972552 /* BirthdayViewController.swift */,
+				244131C02C609B1E0068527D /* Birthday */,
 			);
 			path = SignUpOptional;
 			sourceTree = "<group>";
@@ -271,6 +273,15 @@
 				244131BD2C60956F0068527D /* NicknameViewModel.swift */,
 			);
 			path = Nickname;
+			sourceTree = "<group>";
+		};
+		244131C02C609B1E0068527D /* Birthday */ = {
+			isa = PBXGroup;
+			children = (
+				0412806E2AEFAD2D00972552 /* BirthdayViewController.swift */,
+				244131C12C609B2F0068527D /* BirthdayViewModel.swift */,
+			);
+			path = Birthday;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -434,6 +445,7 @@
 				240815812C5CAEB800886D1E /* ShoppingListViewController.swift in Sources */,
 				041280262AEF9BAB00972552 /* SceneDelegate.swift in Sources */,
 				244131BE2C60956F0068527D /* NicknameViewModel.swift in Sources */,
+				244131C22C609B2F0068527D /* BirthdayViewModel.swift in Sources */,
 				041280582AEFA05300972552 /* SignInViewModel.swift in Sources */,
 				240815772C5B7D3000886D1E /* APIKey.swift in Sources */,
 			);

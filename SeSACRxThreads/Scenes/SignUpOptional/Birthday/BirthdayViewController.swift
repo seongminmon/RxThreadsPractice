@@ -60,13 +60,7 @@ class BirthdayViewController: UIViewController {
     
     let nextButton = PointButton(title: "가입하기")
     
-    let info = PublishRelay<String>()
-    let infoColor = PublishRelay<UIColor>()
-    
-    let year = PublishRelay<Int>()
-    let month = PublishRelay<Int>()
-    let day = PublishRelay<Int>()
-    
+    let viewModel = BirthdayViewModel()
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -76,59 +70,43 @@ class BirthdayViewController: UIViewController {
     }
     
     func bind() {
-        info
+        let input = BirthdayViewModel.Input(
+            date: birthDayPicker.rx.date,
+            nextTap: nextButton.rx.tap
+        )
+        let output = viewModel.transform(input: input)
+        
+        output.validation
+            .bind(to: nextButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        output.validation
+            .map { $0 ? Color.green : Color.red }
+            .bind(to: infoLabel.rx.textColor,
+                  nextButton.rx.backgroundColor)
+            .disposed(by: disposeBag)
+        
+        output.validation
+            .map { $0 ? "가입 가능한 나이입니다" : "만 17세 이상만 가입 가능합니다" }
             .bind(to: infoLabel.rx.text)
             .disposed(by: disposeBag)
         
-        infoColor
-            .bind(to: infoLabel.rx.textColor)
-            .disposed(by: disposeBag)
-        
-        year
+        output.year
             .map { "\($0)년" }
             .bind(to: yearLabel.rx.text)
             .disposed(by: disposeBag)
         
-        month
+        output.month
             .map { "\($0)월" }
             .bind(to: monthLabel.rx.text)
             .disposed(by: disposeBag)
         
-        day
+        output.day
             .map { "\($0)일" }
             .bind(to: dayLabel.rx.text)
             .disposed(by: disposeBag)
         
-        birthDayPicker.rx.date
-            .map {
-                // 만 17세 이상인지 판별
-                let component = Calendar.current.dateComponents([.year], from: $0, to: Date())
-                guard let age = component.year else { return false }
-                return age >= 17
-            }
-            .bind(with: self) { owner, value in
-                // 레이블 표시 + 색 변경, 버튼 활성화 + 색 변경
-                owner.nextButton.isEnabled = value
-                owner.nextButton.backgroundColor = value ? Color.green : Color.red
-                owner.infoColor.accept(value ? Color.green : Color.red)
-                owner.info.accept(value ? "가입 가능한 나이입니다" : "만 17세 이상만 가입 가능합니다")
-            }
-            .disposed(by: disposeBag)
-        
-        // 현재 선택한 날짜 표시하기
-        birthDayPicker.rx.date
-            .bind(with: self) { owner, date in
-                let component = Calendar.current.dateComponents([.year, .month, .day], from: date)
-                guard let year = component.year,
-                      let month = component.month,
-                      let day = component.day else { return }
-                owner.year.accept(year)
-                owner.month.accept(month)
-                owner.day.accept(day)
-            }
-            .disposed(by: disposeBag)
-        
-        nextButton.rx.tap
+        output.nextTap
             .bind(with: self) { owner, _ in
                 owner.showAlert(title: "가입 완료", completionHandler: nil)
             }
