@@ -16,38 +16,48 @@ class SignUpViewController: UIViewController {
     let validationButton = UIButton()
     let nextButton = PointButton(title: "다음")
     
+    let viewModel = SignUpViewModel()
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLayout()
         configure()
+        bind()
+    }
+    
+    func bind() {
+        let input = SignUpViewModel.Input(
+            text: emailTextField.rx.text.orEmpty,
+            validationTap: validationButton.rx.tap,
+            nextTap: nextButton.rx.tap
+        )
+        let output = viewModel.transform(input: input)
         
         // email 조건 검사에 따라 버튼 활성화, 색 변경, 중복확인 버튼 isHidden 처리
-        emailTextField.rx.text.orEmpty
-            .map { $0.count >= 8 }
-            .bind(with: self) { owner, flag in
-                if flag {
-                    owner.nextButton.isEnabled = true
-                    owner.nextButton.backgroundColor = Color.green
-                    owner.validationButton.isHidden = false
-                } else {
-                    owner.nextButton.isEnabled = false
-                    owner.nextButton.backgroundColor = Color.red
-                    owner.validationButton.isHidden = true
-                }
-            }
+        output.validation
+            .drive(nextButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        output.validation
+            .map { $0 ? Color.green : Color.red }
+            .drive(nextButton.rx.backgroundColor)
+            .disposed(by: disposeBag)
+        
+        output.validation
+            .map { !$0 }
+            .drive(validationButton.rx.isHidden)
             .disposed(by: disposeBag)
         
         // 중복 확인 버튼
-        validationButton.rx.tap
+        output.validationTap
             .bind(with: self) { owner, _ in
                 owner.showAlert(title: "사용 가능한 이메일입니다.", completionHandler: nil)
             }
             .disposed(by: disposeBag)
         
         // Password 화면으로 이동
-        nextButton.rx.tap
+        output.nextTap
             .bind(with: self) { owner, _ in
                 let vc = PasswordViewController()
                 owner.navigationController?.pushViewController(vc, animated: true)
