@@ -42,6 +42,7 @@
 		244131C22C609B2F0068527D /* BirthdayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244131C12C609B2F0068527D /* BirthdayViewModel.swift */; };
 		244131C42C60B1400068527D /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244131C32C60B1400068527D /* SignUpViewModel.swift */; };
 		244131C62C60B3350068527D /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244131C52C60B3350068527D /* PasswordViewModel.swift */; };
+		244131C82C60B6110068527D /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244131C72C60B6110068527D /* SearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		244131C12C609B2F0068527D /* BirthdayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewModel.swift; sourceTree = "<group>"; };
 		244131C32C60B1400068527D /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		244131C52C60B3350068527D /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
+		244131C72C60B6110068527D /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				04F6DBFD2C5B0C0300667F4D /* SearchViewController.swift */,
+				244131C72C60B6110068527D /* SearchViewModel.swift */,
 				04F6DBFF2C5B0C2200667F4D /* SearchTableViewCell.swift */,
 				04F6DC012C5B0D8200667F4D /* DetailViewController.swift */,
 			);
@@ -454,6 +457,7 @@
 				244131BE2C60956F0068527D /* NicknameViewModel.swift in Sources */,
 				244131C22C609B2F0068527D /* BirthdayViewModel.swift in Sources */,
 				244131C42C60B1400068527D /* SignUpViewModel.swift in Sources */,
+				244131C82C60B6110068527D /* SearchViewModel.swift in Sources */,
 				041280582AEFA05300972552 /* SignInViewModel.swift in Sources */,
 				240815772C5B7D3000886D1E /* APIKey.swift in Sources */,
 			);
