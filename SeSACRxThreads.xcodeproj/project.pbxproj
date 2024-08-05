@@ -41,6 +41,7 @@
 		244131BE2C60956F0068527D /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244131BD2C60956F0068527D /* NicknameViewModel.swift */; };
 		244131C22C609B2F0068527D /* BirthdayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244131C12C609B2F0068527D /* BirthdayViewModel.swift */; };
 		244131C42C60B1400068527D /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244131C32C60B1400068527D /* SignUpViewModel.swift */; };
+		244131C62C60B3350068527D /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244131C52C60B3350068527D /* PasswordViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		244131BD2C60956F0068527D /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
 		244131C12C609B2F0068527D /* BirthdayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewModel.swift; sourceTree = "<group>"; };
 		244131C32C60B1400068527D /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		244131C52C60B3350068527D /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 				041280692AEFA91E00972552 /* SignUpViewController.swift */,
 				244131C32C60B1400068527D /* SignUpViewModel.swift */,
 				0412806B2AEFABFE00972552 /* PasswordViewController.swift */,
+				244131C52C60B3350068527D /* PasswordViewModel.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				041280782AF1D14000972552 /* Resource.swift in Sources */,
 				0412806F2AEFAD2D00972552 /* BirthdayViewController.swift in Sources */,
 				041280652AEFA2F000972552 /* SignTextField.swift in Sources */,
+				244131C62C60B3350068527D /* PasswordViewModel.swift in Sources */,
 				0412806C2AEFABFE00972552 /* PasswordViewController.swift in Sources */,
 				041280562AEFA04800972552 /* SignInViewController.swift in Sources */,
 				041280632AEFA0CE00972552 /* PointButton.swift in Sources */,

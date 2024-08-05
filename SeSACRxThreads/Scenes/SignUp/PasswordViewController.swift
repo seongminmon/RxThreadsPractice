@@ -16,6 +16,7 @@ class PasswordViewController: UIViewController {
     let nextButton = PointButton(title: "다음")
     let descriptionLabel = UILabel()
     
+    let viewModel = PasswordViewModel()
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -25,21 +26,21 @@ class PasswordViewController: UIViewController {
     }
     
     func bind() {
-        let valid = passwordTextField.rx.text.orEmpty
-            .map { $0.count >= 8 }
+        let input = PasswordViewModel.Input(
+            text: passwordTextField.rx.text.orEmpty,
+            nextTap: nextButton.rx.tap
+        )
+        let output = viewModel.transform(input: input)
         
-        valid
+        output.validation
             .bind(with: self) { owner, value in
+                owner.nextButton.isEnabled = value
+                owner.descriptionLabel.isHidden = value
                 owner.nextButton.backgroundColor = value ? Color.green : Color.red
             }
             .disposed(by: disposeBag)
         
-        valid
-            .bind(to: nextButton.rx.isEnabled,
-                  descriptionLabel.rx.isHidden)
-            .disposed(by: disposeBag)
-        
-        nextButton.rx.tap
+        output.nextTap
             .bind(with: self) { owner, _ in
                 let vc = PhoneViewController()
                 owner.navigationController?.pushViewController(vc, animated: true)
