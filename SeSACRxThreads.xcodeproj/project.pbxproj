@@ -43,6 +43,7 @@
 		244131C42C60B1400068527D /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244131C32C60B1400068527D /* SignUpViewModel.swift */; };
 		244131C62C60B3350068527D /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244131C52C60B3350068527D /* PasswordViewModel.swift */; };
 		244131C82C60B6110068527D /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244131C72C60B6110068527D /* SearchViewModel.swift */; };
+		244131CA2C60FD3B0068527D /* ShoppingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244131C92C60FD3B0068527D /* ShoppingListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		244131C32C60B1400068527D /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		244131C52C60B3350068527D /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
 		244131C72C60B6110068527D /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		244131C92C60FD3B0068527D /* ShoppingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +262,7 @@
 			children = (
 				240815842C5CB0DA00886D1E /* Shopping.swift */,
 				240815802C5CAEB800886D1E /* ShoppingListViewController.swift */,
+				244131C92C60FD3B0068527D /* ShoppingListViewModel.swift */,
 				240815822C5CB0A200886D1E /* ShoppingTableViewCell.swift */,
 				240815862C5CBC9F00886D1E /* ShoppingDetailViewController.swift */,
 			);
@@ -451,6 +454,7 @@
 				041280732AEFAD4B00972552 /* NicknameViewController.swift in Sources */,
 				0412806A2AEFA91E00972552 /* SignUpViewController.swift in Sources */,
 				041280712AEFAD3D00972552 /* PhoneViewController.swift in Sources */,
+				244131CA2C60FD3B0068527D /* ShoppingListViewModel.swift in Sources */,
 				244131BB2C6093710068527D /* PhoneViewModel.swift in Sources */,
 				240815812C5CAEB800886D1E /* ShoppingListViewController.swift in Sources */,
 				041280262AEF9BAB00972552 /* SceneDelegate.swift in Sources */,
