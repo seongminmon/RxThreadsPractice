@@ -37,6 +37,8 @@
 		240815832C5CB0A200886D1E /* ShoppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240815822C5CB0A200886D1E /* ShoppingTableViewCell.swift */; };
 		240815852C5CB0DA00886D1E /* Shopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240815842C5CB0DA00886D1E /* Shopping.swift */; };
 		240815872C5CBC9F00886D1E /* ShoppingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240815862C5CBC9F00886D1E /* ShoppingDetailViewController.swift */; };
+		244131BB2C6093710068527D /* PhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244131BA2C6093710068527D /* PhoneViewModel.swift */; };
+		244131BE2C60956F0068527D /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244131BD2C60956F0068527D /* NicknameViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		240815822C5CB0A200886D1E /* ShoppingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewCell.swift; sourceTree = "<group>"; };
 		240815842C5CB0DA00886D1E /* Shopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shopping.swift; sourceTree = "<group>"; };
 		240815862C5CBC9F00886D1E /* ShoppingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingDetailViewController.swift; sourceTree = "<group>"; };
+		244131BA2C6093710068527D /* PhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewModel.swift; sourceTree = "<group>"; };
+		244131BD2C60956F0068527D /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,8 +206,8 @@
 		0412806D2AEFAD0F00972552 /* SignUpOptional */ = {
 			isa = PBXGroup;
 			children = (
-				041280702AEFAD3D00972552 /* PhoneViewController.swift */,
-				041280722AEFAD4B00972552 /* NicknameViewController.swift */,
+				244131BC2C60955C0068527D /* Phone */,
+				244131BF2C60957C0068527D /* Nickname */,
 				0412806E2AEFAD2D00972552 /* BirthdayViewController.swift */,
 			);
 			path = SignUpOptional;
@@ -249,6 +253,24 @@
 				240815862C5CBC9F00886D1E /* ShoppingDetailViewController.swift */,
 			);
 			path = Shopping;
+			sourceTree = "<group>";
+		};
+		244131BC2C60955C0068527D /* Phone */ = {
+			isa = PBXGroup;
+			children = (
+				041280702AEFAD3D00972552 /* PhoneViewController.swift */,
+				244131BA2C6093710068527D /* PhoneViewModel.swift */,
+			);
+			path = Phone;
+			sourceTree = "<group>";
+		};
+		244131BF2C60957C0068527D /* Nickname */ = {
+			isa = PBXGroup;
+			children = (
+				041280722AEFAD4B00972552 /* NicknameViewController.swift */,
+				244131BD2C60956F0068527D /* NicknameViewModel.swift */,
+			);
+			path = Nickname;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,8 +430,10 @@
 				041280732AEFAD4B00972552 /* NicknameViewController.swift in Sources */,
 				0412806A2AEFA91E00972552 /* SignUpViewController.swift in Sources */,
 				041280712AEFAD3D00972552 /* PhoneViewController.swift in Sources */,
+				244131BB2C6093710068527D /* PhoneViewModel.swift in Sources */,
 				240815812C5CAEB800886D1E /* ShoppingListViewController.swift in Sources */,
 				041280262AEF9BAB00972552 /* SceneDelegate.swift in Sources */,
+				244131BE2C60956F0068527D /* NicknameViewModel.swift in Sources */,
 				041280582AEFA05300972552 /* SignInViewModel.swift in Sources */,
 				240815772C5B7D3000886D1E /* APIKey.swift in Sources */,
 			);

@@ -48,7 +48,7 @@ class NicknameViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        // 구독 시점 미뤄서 맨 처음에는 빈 텍스트로 표시하기
+        // 구독 시점 미뤄서 처음에는 빈 텍스트로 표시하기
         descriptionText
             .bind(to: descriptionLabel.rx.text)
             .disposed(by: disposeBag)

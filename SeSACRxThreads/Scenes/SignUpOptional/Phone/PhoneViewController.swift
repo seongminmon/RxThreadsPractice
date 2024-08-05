@@ -15,6 +15,7 @@ class PhoneViewController: UIViewController {
     let phoneTextField = SignTextField(placeholderText: "연락처를 입력해주세요")
     let nextButton = PointButton(title: "다음")
     
+    let viewModel = PhoneViewModel()
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -24,21 +25,23 @@ class PhoneViewController: UIViewController {
     }
     
     func bind() {
-        // 10자리, 숫자만 가능
-        let valid = phoneTextField.rx.text.orEmpty
-            .map { $0.count == 10 && Int($0) != nil }
+        let input = PhoneViewModel.Input(
+            text: phoneTextField.rx.text.orEmpty,
+            tap: nextButton.rx.tap
+        )
+        let output = viewModel.transform(input: input)
         
-        valid
+        output.validation
             .bind(to: nextButton.rx.isEnabled)
             .disposed(by: disposeBag)
         
-        valid
+        output.validation
             .bind(with: self) { owner, value in
                 owner.nextButton.backgroundColor = value ? Color.green : Color.red
             }
             .disposed(by: disposeBag)
         
-        nextButton.rx.tap
+        output.tap
             .bind(with: self) { owner, _ in
                 let vc = NicknameViewController()
                 owner.navigationController?.pushViewController(vc, animated: true)
