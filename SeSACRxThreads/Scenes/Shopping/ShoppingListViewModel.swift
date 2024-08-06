@@ -19,6 +19,8 @@ final class ShoppingListViewModel {
         let addTap: ControlEvent<Void>
         let cellSelected: ControlEvent<IndexPath>
         let cellDeleted: ControlEvent<IndexPath>
+        let cellCheckTap: Observable<Int>
+        let cellStarTap: Observable<Int>
     }
     
     struct Output {
@@ -27,7 +29,6 @@ final class ShoppingListViewModel {
     }
     
     func transform(input: Input) -> Output {
-        
         let list = BehaviorRelay<[Shopping]>(value: data)
         
         // 실시간 검색
@@ -38,6 +39,20 @@ final class ShoppingListViewModel {
                 print("실시간 검색: \(value)")
                 let result = value.isEmpty ? owner.data : owner.data.filter { $0.contents.contains(value) }
                 list.accept(result)
+            }
+            .disposed(by: disposeBag)
+        
+        input.cellCheckTap
+            .bind(with: self) { owner, row in
+                owner.data[row].isComplete.toggle()
+                list.accept(owner.data)
+            }
+            .disposed(by: disposeBag)
+        
+        input.cellStarTap
+            .bind(with: self) { owner, row in
+                owner.data[row].isStar.toggle()
+                list.accept(owner.data)
             }
             .disposed(by: disposeBag)
         

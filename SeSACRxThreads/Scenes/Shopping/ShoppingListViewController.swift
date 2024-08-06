@@ -26,11 +26,16 @@ final class ShoppingListViewController: UIViewController {
     }
     
     private func bind() {
+        let cellCheckTap = PublishRelay<Int>()
+        let cellStarTap = PublishRelay<Int>()
+        
         let input = ShoppingListViewModel.Input(
             searchText: searchTextField.rx.text.orEmpty,
             addTap: addButton.rx.tap,
             cellSelected: tableView.rx.itemSelected,
-            cellDeleted: tableView.rx.itemDeleted
+            cellDeleted: tableView.rx.itemDeleted,
+            cellCheckTap: cellCheckTap.asObservable(),
+            cellStarTap: cellStarTap.asObservable()
         )
         let output = viewModel.transform(input: input)
         
@@ -41,22 +46,15 @@ final class ShoppingListViewController: UIViewController {
             )) { row, element, cell in
                 cell.configureCell(element)
                 
-                // TODO: - 셀 내부의 버튼 탭 뷰 모델로 전달하기
-//                cell.checkButton.rx.tap
-//                    .bind(with: self) { owner, _ in
-//                        print("완료 버튼 탭")
-//                        owner.data[row].isComplete.toggle()
-//                        owner.list.accept(owner.data)
-//                    }
-//                    .disposed(by: cell.disposeBag)
-//                
-//                cell.starButton.rx.tap
-//                    .bind(with: self) { owner, _ in
-//                        print("즐겨찾기 버튼 탭")
-//                        owner.data[row].isStar.toggle()
-//                        owner.list.accept(owner.data)
-//                    }
-//                    .disposed(by: cell.disposeBag)
+                cell.checkButton.rx.tap
+                    .map { row }
+                    .bind(to: cellCheckTap)
+                    .disposed(by: cell.disposeBag)
+                
+                cell.starButton.rx.tap
+                    .map { row }
+                    .bind(to: cellStarTap)
+                    .disposed(by: cell.disposeBag)
             }
             .disposed(by: disposeBag)
         
