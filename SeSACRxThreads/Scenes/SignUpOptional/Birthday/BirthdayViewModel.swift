@@ -20,7 +20,7 @@ class BirthdayViewModel {
     
     struct Output {
         let validation: Observable<Bool>
-        let year: PublishRelay<Int>
+        let year: BehaviorRelay<Int?>
         let month: BehaviorRelay<Int>
         let day: BehaviorRelay<Int>
         let nextTap: ControlEvent<Void>
@@ -29,9 +29,9 @@ class BirthdayViewModel {
     func transform(input: Input) -> Output {
         
         // MARK: - PublishRelay 쓰면 초기값 적용 x
-        let year = PublishRelay<Int>()
+        let year = BehaviorRelay<Int?>(value: nil)
         let month = BehaviorRelay<Int>(value: 0)
-        let day = BehaviorRelay<Int>(value: 0)
+        let day = BehaviorRelay<Int>(value: 987654321)
         
         // 현재 날짜 표시
         input.date

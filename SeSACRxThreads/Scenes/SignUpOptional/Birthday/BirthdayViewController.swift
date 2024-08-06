@@ -92,7 +92,7 @@ class BirthdayViewController: UIViewController {
             .disposed(by: disposeBag)
         
         output.year
-            .map { "\($0)년" }
+            .map { "\($0 ?? 0)년" }
             .bind(to: yearLabel.rx.text)
             .disposed(by: disposeBag)
         
