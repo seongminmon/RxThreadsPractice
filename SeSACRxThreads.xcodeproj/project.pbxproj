@@ -48,6 +48,7 @@
 		24E422DE2C6338D9003AC4CD /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E422DD2C6338D9003AC4CD /* MovieCollectionViewCell.swift */; };
 		24E422E02C6338DF003AC4CD /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E422DF2C6338DF003AC4CD /* MovieTableViewCell.swift */; };
 		24E422E22C63394F003AC4CD /* BoxOfficeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E422E12C63394F003AC4CD /* BoxOfficeViewModel.swift */; };
+		24E422E82C634686003AC4CD /* ShoppingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E422E72C634686003AC4CD /* ShoppingCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 		24E422DD2C6338D9003AC4CD /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		24E422DF2C6338DF003AC4CD /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		24E422E12C63394F003AC4CD /* BoxOfficeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeViewModel.swift; sourceTree = "<group>"; };
+		24E422E72C634686003AC4CD /* ShoppingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,11 +271,10 @@
 		2408157F2C5C888600886D1E /* Shopping */ = {
 			isa = PBXGroup;
 			children = (
-				240815842C5CB0DA00886D1E /* Shopping.swift */,
-				240815802C5CAEB800886D1E /* ShoppingListViewController.swift */,
-				244131C92C60FD3B0068527D /* ShoppingListViewModel.swift */,
-				240815822C5CB0A200886D1E /* ShoppingTableViewCell.swift */,
-				240815862C5CBC9F00886D1E /* ShoppingDetailViewController.swift */,
+				24E422E32C63465F003AC4CD /* Model */,
+				24E422E42C634667003AC4CD /* View */,
+				24E422E52C634670003AC4CD /* ViewModel */,
+				24E422E62C634676003AC4CD /* Cell */,
 			);
 			path = Shopping;
 			sourceTree = "<group>";
@@ -314,6 +315,40 @@
 				24E422DF2C6338DF003AC4CD /* MovieTableViewCell.swift */,
 			);
 			path = BoxOffice;
+			sourceTree = "<group>";
+		};
+		24E422E32C63465F003AC4CD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				240815842C5CB0DA00886D1E /* Shopping.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		24E422E42C634667003AC4CD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				240815802C5CAEB800886D1E /* ShoppingListViewController.swift */,
+				240815862C5CBC9F00886D1E /* ShoppingDetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		24E422E52C634670003AC4CD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				244131C92C60FD3B0068527D /* ShoppingListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		24E422E62C634676003AC4CD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				24E422E72C634686003AC4CD /* ShoppingCollectionViewCell.swift */,
+				240815822C5CB0A200886D1E /* ShoppingTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -466,6 +501,7 @@
 				041280562AEFA04800972552 /* SignInViewController.swift in Sources */,
 				041280632AEFA0CE00972552 /* PointButton.swift in Sources */,
 				2408157C2C5C803900886D1E /* UIViewController+.swift in Sources */,
+				24E422E82C634686003AC4CD /* ShoppingCollectionViewCell.swift in Sources */,
 				240815832C5CB0A200886D1E /* ShoppingTableViewCell.swift in Sources */,
 				04F6DC022C5B0D8200667F4D /* DetailViewController.swift in Sources */,
 				240815852C5CB0DA00886D1E /* Shopping.swift in Sources */,

@@ -12,23 +12,27 @@ import RxCocoa
 final class ShoppingListViewModel {
     
     private let disposeBag = DisposeBag()
+    private let recommendData = ["마우스", "키보드", "손풍기", "컵", "샌들", "텀블러"]
     private var data = Shopping.dummy
     
     struct Input {
         let searchText: ControlProperty<String>
         let addTap: ControlEvent<Void>
-        let cellSelected: ControlEvent<IndexPath>
-        let cellDeleted: ControlEvent<IndexPath>
-        let cellCheckTap: Observable<Int>
-        let cellStarTap: Observable<Int>
+        let collectionViewCellSelected: ControlEvent<String>
+        let tableViewCellSelected: ControlEvent<IndexPath>
+        let tableViewCellDeleted: ControlEvent<IndexPath>
+        let tableViewCellCheckTap: Observable<Int>
+        let tableViewCellStarTap: Observable<Int>
     }
     
     struct Output {
         let list: BehaviorRelay<[Shopping]>
         let cellSelected: Observable<String>
+        let recommendList: BehaviorRelay<[String]>
     }
     
     func transform(input: Input) -> Output {
+        let recommendList = BehaviorRelay<[String]>(value: recommendData)
         let list = BehaviorRelay<[Shopping]>(value: data)
         
         // 실시간 검색
@@ -42,21 +46,30 @@ final class ShoppingListViewModel {
             }
             .disposed(by: disposeBag)
         
-        input.cellCheckTap
+        input.collectionViewCellSelected
+            .map { "\($0) 구매하기"}
+            .bind(with: self) { owner, value in
+                let item = Shopping(contents: value, isComplete: false, isStar: false)
+                owner.data.insert(item, at: 0)
+                list.accept(owner.data)
+            }
+            .disposed(by: disposeBag)
+        
+        input.tableViewCellCheckTap
             .bind(with: self) { owner, row in
                 owner.data[row].isComplete.toggle()
                 list.accept(owner.data)
             }
             .disposed(by: disposeBag)
         
-        input.cellStarTap
+        input.tableViewCellStarTap
             .bind(with: self) { owner, row in
                 owner.data[row].isStar.toggle()
                 list.accept(owner.data)
             }
             .disposed(by: disposeBag)
         
-        let cellSelected = input.cellSelected
+        let cellSelected = input.tableViewCellSelected
             .map { [weak self] indexPath in
                 self?.data[indexPath.row].contents ?? ""
             }
@@ -74,7 +87,7 @@ final class ShoppingListViewModel {
             .disposed(by: disposeBag)
         
         // 데이터 삭제
-        input.cellDeleted
+        input.tableViewCellDeleted
             .bind(with: self) { owner, indexPath in
                 print("삭제: \(owner.data[indexPath.row])")
                 owner.data.remove(at: indexPath.row)
@@ -84,7 +97,8 @@ final class ShoppingListViewModel {
         
         return Output(
             list: list,
-            cellSelected: cellSelected
+            cellSelected: cellSelected,
+            recommendList: recommendList
         )
     }
 }

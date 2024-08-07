@@ -14,7 +14,15 @@ final class ShoppingListViewController: UIViewController {
     
     private let searchTextField = UITextField()
     private let addButton = UIButton()
+    private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     private let tableView = UITableView()
+    
+    static func layout() -> UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        layout.scrollDirection = .horizontal
+        return layout
+    }
     
     private let viewModel = ShoppingListViewModel()
     private let disposeBag = DisposeBag()
@@ -31,14 +39,25 @@ final class ShoppingListViewController: UIViewController {
         
         let input = ShoppingListViewModel.Input(
             searchText: searchTextField.rx.text.orEmpty,
-            addTap: addButton.rx.tap,
-            cellSelected: tableView.rx.itemSelected,
-            cellDeleted: tableView.rx.itemDeleted,
-            cellCheckTap: cellCheckTap.asObservable(),
-            cellStarTap: cellStarTap.asObservable()
+            addTap: addButton.rx.tap, collectionViewCellSelected: collectionView.rx.modelSelected(String.self),
+            tableViewCellSelected: tableView.rx.itemSelected,
+            tableViewCellDeleted: tableView.rx.itemDeleted,
+            tableViewCellCheckTap: cellCheckTap.asObservable(),
+            tableViewCellStarTap: cellStarTap.asObservable()
         )
         let output = viewModel.transform(input: input)
         
+        // 컬렉션뷰
+        output.recommendList
+            .bind(to: collectionView.rx.items(
+                cellIdentifier: ShoppingCollectionViewCell.id,
+                cellType: ShoppingCollectionViewCell.self
+            )) { row, element, cell in
+                cell.configureCell(element)
+            }
+            .disposed(by: disposeBag)
+        
+        // 테이블뷰
         output.list
             .bind(to: tableView.rx.items(
                 cellIdentifier: ShoppingTableViewCell.id,
@@ -82,10 +101,13 @@ final class ShoppingListViewController: UIViewController {
         addButton.backgroundColor = .systemGray5
         addButton.layer.cornerRadius = 10
         
+        collectionView.register(ShoppingCollectionViewCell.self, forCellWithReuseIdentifier: ShoppingCollectionViewCell.id)
+        collectionView.showsHorizontalScrollIndicator = false
+        
         tableView.register(ShoppingTableViewCell.self, forCellReuseIdentifier: ShoppingTableViewCell.id)
         tableView.rowHeight = 60
         
-        [searchTextField, addButton, tableView].forEach {
+        [searchTextField, addButton, collectionView, tableView].forEach {
             view.addSubview($0)
         }
         
@@ -102,8 +124,14 @@ final class ShoppingListViewController: UIViewController {
             make.height.equalTo(30)
         }
         
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(searchTextField.snp.bottom).offset(8)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.height.equalTo(50)
+        }
+        
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(searchTextField.snp.bottom).offset(16)
+            make.top.equalTo(collectionView.snp.bottom).offset(8)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
