@@ -310,8 +310,8 @@
 			children = (
 				24E422DB2C6338A5003AC4CD /* BoxOfficeViewController.swift */,
 				24E422E12C63394F003AC4CD /* BoxOfficeViewModel.swift */,
-				24E422DF2C6338DF003AC4CD /* MovieTableViewCell.swift */,
 				24E422DD2C6338D9003AC4CD /* MovieCollectionViewCell.swift */,
+				24E422DF2C6338DF003AC4CD /* MovieTableViewCell.swift */,
 			);
 			path = BoxOffice;
 			sourceTree = "<group>";

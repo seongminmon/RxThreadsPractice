@@ -26,10 +26,27 @@ final class BoxOfficeViewController: UIViewController {
     }
     
     private func bind() {
-        let input = BoxOfficeViewModel.Input()
+        let input = BoxOfficeViewModel.Input(
+            tablViewCellTap: tableView.rx.modelSelected(String.self),
+            searchText: searchBar.rx.text.orEmpty,
+            searchButtonTap: searchBar.rx.searchButtonClicked
+        )
         let output = viewModel.transform(input: input)
         
         
+        // 컬렉션뷰 세팅
+        output.recentList
+            .bind(to: collectionView.rx.items(cellIdentifier: MovieCollectionViewCell.identifier, cellType: MovieCollectionViewCell.self)) { row, element, cell in
+                cell.configureCell(element)
+            }
+            .disposed(by: disposeBag)
+        
+        // 테이블뷰 세팅
+        output.movieList
+            .bind(to: tableView.rx.items(cellIdentifier: MovieTableViewCell.identifier, cellType: MovieTableViewCell.self)) { row, element, cell in
+                cell.configureCell(element)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func configureView() {
@@ -40,7 +57,7 @@ final class BoxOfficeViewController: UIViewController {
         tableView.backgroundColor = .systemGreen
         tableView.rowHeight = 100
         
-        [searchBar, tableView, collectionView].forEach {
+        [tableView, collectionView].forEach {
             view.addSubview($0)
         }
         
@@ -57,11 +74,10 @@ final class BoxOfficeViewController: UIViewController {
         }
     }
     
-    static func layout() -> UICollectionViewFlowLayout {
+    static func layout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 120, height: 40)
         layout.scrollDirection = .horizontal
         return layout
     }
 }
-
