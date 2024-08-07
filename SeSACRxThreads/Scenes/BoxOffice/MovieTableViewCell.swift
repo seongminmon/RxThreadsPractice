@@ -12,14 +12,14 @@ final class MovieTableViewCell: UITableViewCell {
     
     static let identifier = "MovieTableViewCell"
     
-    let appNameLabel: UILabel = {
+    private let appNameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.textColor = .black
         return label
     }()
     
-    let appIconImageView: UIImageView = {
+    private let appIconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
@@ -28,7 +28,7 @@ final class MovieTableViewCell: UITableViewCell {
         return imageView
     }()
     
-    let downloadButton: UIButton = {
+    private let downloadButton: UIButton = {
         let button = UIButton()
         button.setTitle("받기", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
@@ -40,16 +40,15 @@ final class MovieTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        self.selectionStyle = .none
-        configure()
+        selectionStyle = .none
+        configureView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configure() {
+    private func configureView() {
         contentView.addSubview(appNameLabel)
         contentView.addSubview(appIconImageView)
         contentView.addSubview(downloadButton)
@@ -72,5 +71,9 @@ final class MovieTableViewCell: UITableViewCell {
             $0.height.equalTo(32)
             $0.width.equalTo(72)
         }
+    }
+    
+    func configureCell(_ text: String) {
+        appNameLabel.text = text
     }
 }

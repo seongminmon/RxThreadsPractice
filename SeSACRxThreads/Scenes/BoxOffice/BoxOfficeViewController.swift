@@ -12,16 +12,27 @@ import SnapKit
 
 final class BoxOfficeViewController: UIViewController {
     
-    let searchBar = UISearchBar()
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
-    let tableView = UITableView()
+    private let searchBar = UISearchBar()
+    private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
+    private let tableView = UITableView()
+    
+    private let viewModel = BoxOfficeViewModel()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+        bind()
     }
     
-    func configureView() {
+    private func bind() {
+        let input = BoxOfficeViewModel.Input()
+        let output = viewModel.transform(input: input)
+        
+        
+    }
+    
+    private func configureView() {
         view.backgroundColor = .white
         collectionView.backgroundColor = .lightGray
         collectionView.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)

@@ -12,11 +12,18 @@ final class MovieCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "MovieCollectionViewCell"
     
-    let label = UILabel()
+    private let label = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        configureView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configureView() {
         layer.cornerRadius = 8
         layer.borderWidth = 1
         layer.borderColor = UIColor.black.cgColor
@@ -29,8 +36,8 @@ final class MovieCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func configureCell(_ text: String) {
+        label.text = text
     }
 }
 
