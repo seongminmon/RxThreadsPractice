@@ -44,6 +44,9 @@
 		244131C62C60B3350068527D /* PasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244131C52C60B3350068527D /* PasswordViewModel.swift */; };
 		244131C82C60B6110068527D /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244131C72C60B6110068527D /* SearchViewModel.swift */; };
 		244131CA2C60FD3B0068527D /* ShoppingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244131C92C60FD3B0068527D /* ShoppingListViewModel.swift */; };
+		24E422DC2C6338A5003AC4CD /* BoxOfficeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E422DB2C6338A5003AC4CD /* BoxOfficeViewController.swift */; };
+		24E422DE2C6338D9003AC4CD /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E422DD2C6338D9003AC4CD /* MovieCollectionViewCell.swift */; };
+		24E422E02C6338DF003AC4CD /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E422DF2C6338DF003AC4CD /* MovieTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +105,9 @@
 		244131C52C60B3350068527D /* PasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewModel.swift; sourceTree = "<group>"; };
 		244131C72C60B6110068527D /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		244131C92C60FD3B0068527D /* ShoppingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewModel.swift; sourceTree = "<group>"; };
+		24E422DB2C6338A5003AC4CD /* BoxOfficeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeViewController.swift; sourceTree = "<group>"; };
+		24E422DD2C6338D9003AC4CD /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		24E422DF2C6338DF003AC4CD /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +259,7 @@
 				0412806D2AEFAD0F00972552 /* SignUpOptional */,
 				04F6DBFC2C5B0BC200667F4D /* Search */,
 				2408157F2C5C888600886D1E /* Shopping */,
+				24E422DA2C633888003AC4CD /* BoxOffice */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -294,6 +301,16 @@
 				244131C12C609B2F0068527D /* BirthdayViewModel.swift */,
 			);
 			path = Birthday;
+			sourceTree = "<group>";
+		};
+		24E422DA2C633888003AC4CD /* BoxOffice */ = {
+			isa = PBXGroup;
+			children = (
+				24E422DB2C6338A5003AC4CD /* BoxOfficeViewController.swift */,
+				24E422DF2C6338DF003AC4CD /* MovieTableViewCell.swift */,
+				24E422DD2C6338D9003AC4CD /* MovieCollectionViewCell.swift */,
+			);
+			path = BoxOffice;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -440,7 +457,9 @@
 				0412806F2AEFAD2D00972552 /* BirthdayViewController.swift in Sources */,
 				041280652AEFA2F000972552 /* SignTextField.swift in Sources */,
 				244131C62C60B3350068527D /* PasswordViewModel.swift in Sources */,
+				24E422E02C6338DF003AC4CD /* MovieTableViewCell.swift in Sources */,
 				0412806C2AEFABFE00972552 /* PasswordViewController.swift in Sources */,
+				24E422DC2C6338A5003AC4CD /* BoxOfficeViewController.swift in Sources */,
 				041280562AEFA04800972552 /* SignInViewController.swift in Sources */,
 				041280632AEFA0CE00972552 /* PointButton.swift in Sources */,
 				2408157C2C5C803900886D1E /* UIViewController+.swift in Sources */,
@@ -462,6 +481,7 @@
 				244131C22C609B2F0068527D /* BirthdayViewModel.swift in Sources */,
 				244131C42C60B1400068527D /* SignUpViewModel.swift in Sources */,
 				244131C82C60B6110068527D /* SearchViewModel.swift in Sources */,
+				24E422DE2C6338D9003AC4CD /* MovieCollectionViewCell.swift in Sources */,
 				041280582AEFA05300972552 /* SignInViewModel.swift in Sources */,
 				240815772C5B7D3000886D1E /* APIKey.swift in Sources */,
 			);
