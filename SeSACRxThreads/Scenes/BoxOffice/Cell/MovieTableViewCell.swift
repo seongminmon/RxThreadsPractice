@@ -73,7 +73,8 @@ final class MovieTableViewCell: UITableViewCell {
         }
     }
     
-    func configureCell(_ text: String) {
-        appNameLabel.text = text
+    func configureCell(_ data: DailyBoxOfficeList) {
+        appNameLabel.text = data.movieNm
+        downloadButton.setTitle(data.openDt, for: .normal)
     }
 }

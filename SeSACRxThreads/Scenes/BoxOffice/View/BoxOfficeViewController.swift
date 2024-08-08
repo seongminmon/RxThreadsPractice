@@ -23,25 +23,11 @@ final class BoxOfficeViewController: UIViewController {
         super.viewDidLoad()
         configureView()
         bind()
-        
-        // networking test
-        NetworkManager.shared.callRequest(targetDt: "20240807")
-            .subscribe(with: self) { owner, movie in
-                dump(movie)
-            } onError: { owner, error in
-                if let error = error as? APIError,
-                   let description = error.errorDescription {
-                    print(description)
-                } else {
-                    print("알 수 없는 에러")
-                }
-            }
-            .disposed(by: disposeBag)
     }
     
     private func bind() {
         let input = BoxOfficeViewModel.Input(
-            tablViewCellTap: tableView.rx.modelSelected(String.self),
+            tablViewCellTap: tableView.rx.modelSelected(DailyBoxOfficeList.self),
             searchText: searchBar.rx.text.orEmpty,
             searchButtonTap: searchBar.rx.searchButtonClicked
         )
@@ -57,7 +43,10 @@ final class BoxOfficeViewController: UIViewController {
         
         // 테이블뷰 세팅
         output.movieList
-            .bind(to: tableView.rx.items(cellIdentifier: MovieTableViewCell.identifier, cellType: MovieTableViewCell.self)) { row, element, cell in
+            .bind(to: tableView.rx.items(
+                cellIdentifier: MovieTableViewCell.identifier,
+                cellType: MovieTableViewCell.self
+            )) { row, element, cell in
                 cell.configureCell(element)
             }
             .disposed(by: disposeBag)
