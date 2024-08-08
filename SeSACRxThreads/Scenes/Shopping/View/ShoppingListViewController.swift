@@ -39,7 +39,8 @@ final class ShoppingListViewController: UIViewController {
         
         let input = ShoppingListViewModel.Input(
             searchText: searchTextField.rx.text.orEmpty,
-            addTap: addButton.rx.tap, collectionViewCellSelected: collectionView.rx.modelSelected(String.self),
+            addTap: addButton.rx.tap, 
+            collectionViewCellSelected: collectionView.rx.modelSelected(String.self),
             tableViewCellSelected: tableView.rx.itemSelected,
             tableViewCellDeleted: tableView.rx.itemDeleted,
             tableViewCellCheckTap: cellCheckTap.asObservable(),

@@ -23,6 +23,20 @@ final class BoxOfficeViewController: UIViewController {
         super.viewDidLoad()
         configureView()
         bind()
+        
+        // networking test
+        NetworkManager.shared.callRequest(targetDt: "20240807")
+            .subscribe(with: self) { owner, movie in
+                dump(movie)
+            } onError: { owner, error in
+                if let error = error as? APIError,
+                   let description = error.errorDescription {
+                    print(description)
+                } else {
+                    print("알 수 없는 에러")
+                }
+            }
+            .disposed(by: disposeBag)
     }
     
     private func bind() {
