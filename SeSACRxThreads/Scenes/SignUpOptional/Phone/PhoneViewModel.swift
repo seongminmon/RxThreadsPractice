@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class PhoneViewModel {
+class PhoneViewModel: ViewModelType {
     
     struct Input {
         let text: ControlProperty<String>

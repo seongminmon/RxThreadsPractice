@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class SignUpViewModel {
+class SignUpViewModel: ViewModelType {
     
     let disposeBag = DisposeBag()
     

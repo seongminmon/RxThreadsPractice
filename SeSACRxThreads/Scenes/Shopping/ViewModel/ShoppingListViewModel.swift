@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class ShoppingListViewModel {
+final class ShoppingListViewModel: ViewModelType {
     
     private let disposeBag = DisposeBag()
     private let recommendData = ["마우스", "키보드", "손풍기", "컵", "샌들", "텀블러"]

@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class SignInViewModel {
+class SignInViewModel: ViewModelType {
     
     struct Input {
         let signInTap: ControlEvent<Void>
