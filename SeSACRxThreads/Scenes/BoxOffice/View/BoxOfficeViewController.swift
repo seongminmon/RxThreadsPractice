@@ -33,7 +33,6 @@ final class BoxOfficeViewController: UIViewController {
         )
         let output = viewModel.transform(input: input)
         
-        
         // 컬렉션뷰 세팅
         output.recentList
             .bind(to: collectionView.rx.items(cellIdentifier: MovieCollectionViewCell.identifier, cellType: MovieCollectionViewCell.self)) { row, element, cell in
