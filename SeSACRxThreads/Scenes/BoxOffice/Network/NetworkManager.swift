@@ -78,4 +78,45 @@ final class NetworkManager {
         
         return result
     }
+    
+    func callRequestWithSingle(targetDt: String) -> Single<Movie> {
+        let url = APIURL.movieURL + "?key=\(APIKey.movieKey)&targetDt=\(targetDt)"
+        
+        let result = Single<Movie>.create { observer in
+            guard let url = URL(string: url) else {
+                observer(.failure(APIError.invalidURL))
+                return Disposables.create()
+            }
+            
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                
+                if error != nil {
+                    observer(.failure(APIError.unknownResponse))
+                    return
+                }
+                
+                guard let response = response as? HTTPURLResponse,
+                      (200..<300).contains(response.statusCode) else {
+                    observer(.failure(APIError.statusError))
+                    return
+                }
+                
+                guard let data else {
+                    observer(.failure(APIError.noData))
+                    return
+                }
+                
+                do {
+                    let value = try JSONDecoder().decode(Movie.self, from: data)
+                    observer(.success(value))
+                } catch {
+                    observer(.failure(APIError.decodingError))
+                }
+            }.resume()
+            
+            return Disposables.create()
+        }
+        
+        return result
+    }
 }
